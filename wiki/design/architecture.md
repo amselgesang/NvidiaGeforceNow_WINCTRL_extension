@@ -18,5 +18,5 @@ WinWing throttle HID  → Bridge → Virtual Warthog Dual Throttle (044F:0404) �
 
 ## Diagrams
 
-- [overview](../diagrams/hybrid-system-overview.html)
-- [sequence](../diagrams/gfn-xinput-sequence.html)
+- [overview](../diagrams/warthog-spoof-overview.html)
+- [sequence](../diagrams/warthog-spoof-sequence.html)

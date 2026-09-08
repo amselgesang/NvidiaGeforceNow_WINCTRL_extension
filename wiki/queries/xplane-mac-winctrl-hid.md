@@ -56,7 +56,7 @@ WinWing Orion (USB HID joystick)
 | X-Plane 12 | Joystick device (+ optional winctrl HID client) | Axes bindable locally |
 | GeForce NOW native Mac | Generic / non-whitelist stick | **Typically ignored** for cloud input |
 
-So X-Plane working on Mac **proves Mac can read the hardware as a joystick**; it does **not** prove GFN will forward that same HID device. NVS still needs remapping (virtual Xbox HID / whitelist device / kb) for cloud.
+So X-Plane working on Mac **proves Mac can read the hardware as a joystick**; it does **not** prove GFN will forward that same HID device. NVS remaps to Warthog whitelist IDs ([D5](../design/decisions.md)).
 
 ## Practical takeaway for Mac-native NVS Bridge
 

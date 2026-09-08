@@ -6,7 +6,7 @@
   "status": "pass",
   "visualReview": "pending",
   "artifact": {
-    "path": "/Users/treffhetes/Desktop/Projects/NVS_extension/wiki/diagrams/gfn-xinput-sequence.html",
+    "path": "/Users/treffhetes/Desktop/Projects/NVS_extension/wiki/diagrams/warthog-spoof-sequence.html",
     "sha256": "5bc4ff9a041ce85058e79cc20d2ec2dd4cbf6dc9d55584118d0db101e97ccea7",
     "bytes": 712976
   },
@@ -440,7 +440,7 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "light",
-        "file": "gfn-xinput-sequence.visual-check.1440x900.light.png"
+        "file": "warthog-spoof-sequence.visual-check.1440x900.light.png"
       },
       {
         "width": 1440,
@@ -472,7 +472,7 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "dark",
-        "file": "gfn-xinput-sequence.visual-check.1440x900.dark.png"
+        "file": "warthog-spoof-sequence.visual-check.1440x900.dark.png"
       },
       {
         "width": 2048,
@@ -504,7 +504,7 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "light",
-        "file": "gfn-xinput-sequence.visual-check.2048x1320.light.png"
+        "file": "warthog-spoof-sequence.visual-check.2048x1320.light.png"
       },
       {
         "width": 2048,
@@ -536,13 +536,13 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "dark",
-        "file": "gfn-xinput-sequence.visual-check.2048x1320.dark.png"
+        "file": "warthog-spoof-sequence.visual-check.2048x1320.dark.png"
       }
     ],
-    "contactSheet": "gfn-xinput-sequence.visual-check.html"
+    "contactSheet": "warthog-spoof-sequence.visual-check.html"
   },
   "sidecars": {
-    "receipt": "gfn-xinput-sequence.visual-check.json",
-    "contactSheet": "gfn-xinput-sequence.visual-check.html"
+    "receipt": "warthog-spoof-sequence.visual-check.json",
+    "contactSheet": "warthog-spoof-sequence.visual-check.html"
   }
 }

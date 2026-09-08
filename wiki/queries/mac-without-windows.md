@@ -7,9 +7,10 @@ tags: [query, macos, gfn, feasibility]
 
 # Can it work without a Windows machine?
 
-**Short answer:** Yes, *possibly* — but **not** via the locked ViGEm/XInput design (D2).
-That path needs Windows (PC or VM). A **Mac-native** path is a different architecture
-and is only **partially evidenced**.
+**Short answer (historical):** Mac-only is possible without Windows, but not via ViGEm.
+**Current v1:** Mac-native **Warthog HID spoof** ([D5](../design/decisions.md)) — see [remapper](../design/remapper.md).
+
+Xbox / gamepad virtual HID remains a **fallback** if Warthog spoof fails GFN detection.
 
 ## What does *not* work on Mac alone
 
@@ -38,12 +39,12 @@ Silicon **if** GFN’s HID backend is used; stock GFN sometimes prefers
 `GameController.framework` and then **fails** to forward usable pad input (see
 `gfn-steam-controller-fix` — patches GFN, ToS/account risk).
 
-**Implication for NVS:** A Mac bridge would be:
+**Implication for NVS (current D5):**
 
-`WinCTRL HID → NVS Bridge (macOS) → virtual Xbox-compatible HID → native GFN`
+`WinCTRL HID → NVS Bridge (macOS) → virtual Warthog 0402+0404 → native GFN`
 
-…and success depends on GFN actually forwarding that virtual device. **Not proven** with
-WinCTRL yet. Treat as research spike, not committed design.
+Xbox-compatible HID is **fallback only** if Warthog spoof fails detection. Empty
+Warthog devices must appear in cloud MSFS Controls before Orion mapping.
 
 ### 3) Patch / fork GFN client — **discouraged**
 
@@ -54,12 +55,12 @@ unless user explicitly accepts risk.
 
 Official Mac GFN supports select Thrustmaster/Logitech devices. Does not help WinCTRL.
 
-## Recommendation
+## Recommendation (post-D5)
 
 | Goal | Path |
 |---|---|
-| Highest chance, soonest | Windows PC **or** Windows VM (keep D2) |
-| No Windows at all | Pivot spike to **Mac virtual HID** (Option 2) + fail-fast GFN visibility test; keep keyboard layer as fallback |
-| Honest expectation | Full analog WinCTRL→GFN on Mac-only is **unknown** until the empty virtual pad appears inside cloud MSFS |
+| v1 (locked) | Mac-native dual Warthog spoof — [plan](../../docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md) |
+| If GFN rejects Warthog IDs | One Xbox HID fallback attempt, then stop |
+| Honest expectation | Unknown until empty `0402`+`0404` appear in cloud MSFS Controls |
 
-- Related: [WinCTRL entity](../entities/winctrl.md), [Mac without Windows](mac-without-windows.md), [X-Plane HID path](xplane-mac-winctrl-hid.md)
+- Related: [WinCTRL](../entities/winctrl.md), [remapper](../design/remapper.md), [X-Plane HID](xplane-mac-winctrl-hid.md)

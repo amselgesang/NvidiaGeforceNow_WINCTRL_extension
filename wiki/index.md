@@ -14,6 +14,8 @@ Catalog of every wiki page. Update on every ingest. Read this first when answeri
 - [overview.md](overview.md) — project brief, goals, current status
 - [log.md](log.md) — chronological ingest/query/design record
 - [../AGENTS.md](../AGENTS.md) — wiki schema and working agreement
+- [../docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md](../docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md) — approved design spec
+- [../docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md](../docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md) — implementation plan
 
 ## Concepts
 
@@ -25,38 +27,40 @@ Catalog of every wiki page. Update on every ingest. Read this first when answeri
 
 - [entities/geforce-now.md](entities/geforce-now.md) — GFN / NVS streaming platform
 - [entities/winctrl.md](entities/winctrl.md) — WinCTRL / WinWing hardware
-- [entities/mobiflight.md](entities/mobiflight.md) — MobiFlight Connector + WASM
+- [entities/mobiflight.md](entities/mobiflight.md) — MobiFlight (research only; deferred)
 
 ## Constraints
 
-- [constraints/feasibility-gates.md](constraints/feasibility-gates.md) — viable / partial / blocked gates
+- [constraints/feasibility-gates.md](constraints/feasibility-gates.md) — G1–G7; v1 = G3 Warthog spoof
 
 ## Approaches
 
-- [approaches/candidates.md](approaches/candidates.md) — A1–A5 index
-- [approaches/hybrid-options.md](approaches/hybrid-options.md) — Options 1–3 under hybrid (D1)
+- [approaches/candidates.md](approaches/candidates.md) — A6 primary (Warthog); A1 fallback
+- [approaches/hybrid-options.md](approaches/hybrid-options.md) — historical pre-D5 notes
 
 ## Design
 
-- [design/decisions.md](design/decisions.md) — D3 skip MF; D4 remapper
-- [design/remapper.md](design/remapper.md) — HID Joystick → Xbox HID design
-- [design/requirements.md](design/requirements.md) — v1 Mac remapper requirements
-- [design/architecture.md](design/architecture.md) — components + path
-- [design/open-questions.md](design/open-questions.md) — Q5 → D decided; Q2–Q4 open
+- [design/decisions.md](design/decisions.md) — D3 skip MF; D5 Warthog spoof
+- [design/remapper.md](design/remapper.md) — dual Warthog sink remapper
+- [design/requirements.md](design/requirements.md) — R1–R7
+- [design/architecture.md](design/architecture.md) — system path
+- [design/open-questions.md](design/open-questions.md) — Q2–Q4 open; Q5 decided
 
 ## Diagrams
 
-- [diagrams/hybrid-system-overview.html](diagrams/hybrid-system-overview.html) — Archify GFN-only overview (showcase + visual-check pass)
-- [diagrams/gfn-xinput-sequence.html](diagrams/gfn-xinput-sequence.html) — Archify sequence (showcase + visual-check pass)
+- [diagrams/warthog-spoof-overview.html](diagrams/warthog-spoof-overview.html) — Archify architecture
+- [diagrams/warthog-spoof-sequence.html](diagrams/warthog-spoof-sequence.html) — Archify sequence
 - Specs: [diagrams/specs/](diagrams/specs/)
 
 ## Queries
 
-- [queries/mac-without-windows.md](queries/mac-without-windows.md) — Mac-only feasibility vs ViGEm/Windows
-- [queries/xplane-mac-winctrl-hid.md](queries/xplane-mac-winctrl-hid.md) — how XP12 reads WinCTRL on Mac (local Orion probe)
+- [queries/mac-without-windows.md](queries/mac-without-windows.md) — Mac-only feasibility (historical)
+- [queries/xplane-mac-winctrl-hid.md](queries/xplane-mac-winctrl-hid.md) — XP12 HID path on Mac
 
 ## Raw sources (immutable)
 
 - [raw/sources/karpathy-llm-wiki.md](../raw/sources/karpathy-llm-wiki.md)
 - [raw/sources/2026-09-08-gfn-hotas-research.md](../raw/sources/2026-09-08-gfn-hotas-research.md)
 - [raw/sources/2026-09-08-mobiflight-winctrl-research.md](../raw/sources/2026-09-08-mobiflight-winctrl-research.md)
+- [raw/sources/2026-09-08-mac-orion-hid-probe.md](../raw/sources/2026-09-08-mac-orion-hid-probe.md)
+- [raw/sources/2026-09-08-warthog-spoof-ids.md](../raw/sources/2026-09-08-warthog-spoof-ids.md)

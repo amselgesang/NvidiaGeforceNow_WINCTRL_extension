@@ -45,8 +45,8 @@ WinWing throttle HID (e.g. BD64) ► ┘              └─► Virtual Warthog 
 
 ### Diagrams
 
-- `wiki/diagrams/hybrid-system-overview.html` — dual-path architecture  
-- `wiki/diagrams/gfn-xinput-sequence.html` — capture → spoof → stream  
+- `wiki/diagrams/warthog-spoof-overview.html` — dual-path architecture  
+- `wiki/diagrams/warthog-spoof-sequence.html` — capture → spoof → stream  
 
 ## Spike plan (fail-fast gate)
 

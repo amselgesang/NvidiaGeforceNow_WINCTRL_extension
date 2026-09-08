@@ -2,11 +2,23 @@
 
 Append-only. Prefix: `## [YYYY-MM-DD] <kind> | <title>`
 
+## [2026-09-08] lint | D5 wiki consistency + diagram rename
+
+- Aligned candidates/feasibility/entities/concepts/queries to D5 (A6/G3 primary; Xbox = fallback).
+- Renamed Archify artifacts: `warthog-spoof-overview` + `warthog-spoof-sequence` (visual-check ok).
+- Removed stale `hybrid-system-overview` / `gfn-xinput-sequence` HTML+specs.
+- Pages: `index.md`, `overview.md`, approaches, constraints, concepts, entities, queries, diagrams.
+
+## [2026-09-08] design | Implementation plan — Warthog spoof remapper
+
+- Wrote `docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md` (SwiftPM, Tasks 1–8, empty-spoof gate before Orion map).
+- Next: execute plan (subagent-driven or inline) starting Task 1.
+
 ## [2026-09-08] design | Spec written — Warthog spoof remapper
 
 - User approved D5 Warthog stick + dual throttle design.
-- Formal spec: `docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md` (not yet committed — awaiting your review).
-- Next after your OK: implementation plan (writing-plans).
+- Formal spec: `docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md` (on branch `cursor/warthog-spoof-remapper-design`).
+- Follow-on: implementation plan (completed same day).
 
 ## [2026-09-08] design | D5 Warthog stick + dual throttle spoof
 

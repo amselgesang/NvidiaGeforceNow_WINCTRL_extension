@@ -7,37 +7,31 @@ tags: [design, questions]
 
 # Open questions
 
-## Q1 — v1 success criteria (blocking)
+## Q1 — v1 success criteria
 
-What does "success" mean for v1?
-
-- **A.** Flight axes + buttons only into GFN (no live CDU/LED sync)
-- **B.** Full MobiFlight parity on GFN (inputs + displays/LEDs) — likely blocked; needs non-GFN or future API
-- **C.** Hybrid: best-effort GFN inputs now + keep local MSFS + MobiFlight for full panels
-
-**Status:** **decided → C (Hybrid).** See [D1](decisions.md).
+**Status:** decided → hybrid then amended; final v1 = GFN Warthog-spoof inputs only ([D3](decisions.md)/[D5](decisions.md)).
 
 ## Q5 — Bridge host OS
 
-- **D.** Mac-native only — remap HID Joystick → virtual Xbox HID ([D4](decisions.md))
+- **D.** Mac-native Warthog HID spoof ([D5](decisions.md))
 
-**Status:** **decided → D** (user: remap standard HID joystick to GFN-accepted class).
+**Status:** **decided → D**.
 
 ## Q2 — Target sims / clients
 
-MSFS 2020, MSFS 2024, DCS, X-Plane, others? Which GFN client OS (Windows native app assumed)?
+Primary: MSFS on GeForce NOW via macOS native client. Others?
 
-**Status:** open.
+**Status:** open (default MSFS for spike).
 
 ## Q3 — Hardware inventory
 
-Which exact WinCTRL devices must work in v1 (stick/throttle only vs FCU/MCDU/AGP/…)?
+- Stick: Orion Base 2 + JGRIP-F16 `4098:BEA8` (probed)
+- Throttle: WinWing quadrant — confirm PID on attach (often Orion Throttle Base II `4098:BD64`)
 
-**Status:** open.
+**Status:** stick confirmed; throttle PID pending plug-in.
 
 ## Q4 — Acceptable compromises
 
-Is virtual Xbox mapping OK if MSFS bindings must be rebuilt? Is keyboard injection OK for
-panel buttons?
+Warthog spoof accepted (D5). If GFN rejects spoof, is Xbox HID fallback OK?
 
-**Status:** open.
+**Status:** open (spec allows one fallback try).

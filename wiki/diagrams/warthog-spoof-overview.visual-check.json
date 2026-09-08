@@ -6,7 +6,7 @@
   "status": "pass",
   "visualReview": "pending",
   "artifact": {
-    "path": "/Users/treffhetes/Desktop/Projects/NVS_extension/wiki/diagrams/hybrid-system-overview.html",
+    "path": "/Users/treffhetes/Desktop/Projects/NVS_extension/wiki/diagrams/warthog-spoof-overview.html",
     "sha256": "9b9fab3ff6c6aa6cccbeee57d2d135d52f39b43fed43788fcda03de2a83a7cf4",
     "bytes": 711845
   },
@@ -440,7 +440,7 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "light",
-        "file": "hybrid-system-overview.visual-check.1440x900.light.png"
+        "file": "warthog-spoof-overview.visual-check.1440x900.light.png"
       },
       {
         "width": 1440,
@@ -472,7 +472,7 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "dark",
-        "file": "hybrid-system-overview.visual-check.1440x900.dark.png"
+        "file": "warthog-spoof-overview.visual-check.1440x900.dark.png"
       },
       {
         "width": 2048,
@@ -504,7 +504,7 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "light",
-        "file": "hybrid-system-overview.visual-check.2048x1320.light.png"
+        "file": "warthog-spoof-overview.visual-check.2048x1320.light.png"
       },
       {
         "width": 2048,
@@ -536,13 +536,13 @@
         "viewerChromeActive": true,
         "viewerChromeOk": true,
         "resolvedTheme": "dark",
-        "file": "hybrid-system-overview.visual-check.2048x1320.dark.png"
+        "file": "warthog-spoof-overview.visual-check.2048x1320.dark.png"
       }
     ],
-    "contactSheet": "hybrid-system-overview.visual-check.html"
+    "contactSheet": "warthog-spoof-overview.visual-check.html"
   },
   "sidecars": {
-    "receipt": "hybrid-system-overview.visual-check.json",
-    "contactSheet": "hybrid-system-overview.visual-check.html"
+    "receipt": "warthog-spoof-overview.visual-check.json",
+    "contactSheet": "warthog-spoof-overview.visual-check.html"
   }
 }

@@ -7,14 +7,15 @@ tags: [approaches, architecture]
 
 # Candidate approaches
 
-**Parent strategy:** GFN XInput bridge ([D2](../design/decisions.md)); MobiFlight deferred ([D3](../design/decisions.md)).
+**v1 locked:** Warthog stick + dual throttle spoof ([D5](../design/decisions.md)). MobiFlight deferred ([D3](../design/decisions.md)).
 
 | ID | Name | Role in v1 | Feasibility |
 |---|---|---|---|
-| A1 | Local XInput bridge | **Primary / only build** | partial |
+| A6 | Dual Warthog HID spoof (`044F:0402` + `044F:0404`) | **Primary build** | unknown → spike |
+| A1 | Local XInput / Xbox HID bridge | Fallback if A6 fails GFN detection | partial |
 | A2 | Keyboard/mouse injector | Deferred | partial |
-| A3 | Whitelist HOTAS HID emulation | Research backlog | unknown |
+| A3 | Other whitelist HOTAS spoof | Covered by A6 (Warthog) | unknown |
 | A4 | Full MobiFlight on GFN | Rejected | blocked |
-| A5 | Hybrid dual-path (local MF) | **Deferred (D3 — no Mac MF)** | viable later |
+| A5 | Hybrid dual-path (local MF) | Deferred (D3) | viable later |
 
-Details: [hybrid-options.md](hybrid-options.md) (historical options; v1 = Option 1 only).
+Historical trade-off notes: [hybrid-options.md](hybrid-options.md) (pre-D5; XInput-first — superseded).
