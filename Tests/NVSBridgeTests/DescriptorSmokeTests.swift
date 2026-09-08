@@ -8,6 +8,10 @@ final class DescriptorSmokeTests: XCTestCase {
         XCTAssertEqual(DeviceIDs.warthogStick.pid, 0x0402)
     }
 
+    func testWarthogThrottleIDs() {
+        XCTAssertEqual(DeviceIDs.warthogThrottle.pid, 0x0404)
+    }
+
     func testDeviceCreationFailureExplainsVirtualHIDSigningRequirement() {
         let message = VirtualHIDPublisherError.deviceCreationFailed.errorDescription
 

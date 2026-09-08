@@ -28,13 +28,35 @@ final class VirtualHIDPublisher {
     private var devices: [IOHIDUserDevice] = []
 
     func publishWarthogStick(centered: Bool) throws {
-        let identifier = DeviceIDs.warthogStick
+        try publish(
+            identifier: DeviceIDs.warthogStick,
+            descriptor: WarthogDescriptors.flightStick,
+            product: "HOTAS Warthog Flight Stick",
+            idleReportSize: centered ? 8 : nil
+        )
+    }
+
+    func publishWarthogThrottle(centered: Bool) throws {
+        try publish(
+            identifier: DeviceIDs.warthogThrottle,
+            descriptor: WarthogDescriptors.dualThrottle,
+            product: "HOTAS Warthog Dual Throttle",
+            idleReportSize: centered ? 4 : nil
+        )
+    }
+
+    private func publish(
+        identifier: DeviceID,
+        descriptor: [UInt8],
+        product: String,
+        idleReportSize: Int?
+    ) throws {
         let properties: [String: Any] = [
             kIOHIDVendorIDKey: NSNumber(value: identifier.vid),
             kIOHIDProductIDKey: NSNumber(value: identifier.pid),
-            kIOHIDReportDescriptorKey: Data(WarthogDescriptors.flightStick),
+            kIOHIDReportDescriptorKey: Data(descriptor),
             kIOHIDManufacturerKey: "Thrustmaster",
-            kIOHIDProductKey: "HOTAS Warthog Flight Stick",
+            kIOHIDProductKey: product,
         ]
 
         guard let device = IOHIDUserDeviceCreateWithProperties(
@@ -47,8 +69,8 @@ final class VirtualHIDPublisher {
 
         devices.append(device)
 
-        if centered {
-            let idleReport = [UInt8](repeating: 0, count: 8)
+        if let idleReportSize {
+            let idleReport = [UInt8](repeating: 0, count: idleReportSize)
             let result = idleReport.withUnsafeBytes { bytes in
                 IOHIDUserDeviceHandleReportWithTimeStamp(
                     device,

@@ -23,4 +23,18 @@ enum WarthogDescriptors {
         0x81, 0x02,       //   Input (Data, Variable, Absolute)
         0xC0,             // End Collection
     ]
+
+    static let dualThrottle: [UInt8] = [
+        0x05, 0x01,       // Usage Page (Generic Desktop)
+        0x09, 0x04,       // Usage (Joystick)
+        0xA1, 0x01,       // Collection (Application)
+        0x09, 0x32,       //   Usage (Z)
+        0x09, 0x35,       //   Usage (Rz)
+        0x15, 0x00,       //   Logical Minimum (0)
+        0x26, 0xFF, 0x7F, //   Logical Maximum (32767)
+        0x75, 0x10,       //   Report Size (16)
+        0x95, 0x02,       //   Report Count (2)
+        0x81, 0x02,       //   Input (Data, Variable, Absolute)
+        0xC0,             // End Collection
+    ]
 }
