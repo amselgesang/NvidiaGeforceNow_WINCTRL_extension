@@ -72,3 +72,10 @@ Append-only. Prefix: `## [YYYY-MM-DD] <kind> | <title>`
 - Ingested GFN HOTAS whitelist + XInput workaround research; MobiFlight WASM/SimConnect + WinCTRL HID research.
 - Seeded overview, entities, concepts, feasibility gates, open questions (Q1 blocking), approach stubs.
 - Pages touched: `wiki/overview.md`, `wiki/index.md`, `wiki/log.md`, `wiki/entities/*`, `wiki/concepts/*`, `wiki/constraints/feasibility-gates.md`, `wiki/design/open-questions.md`, `wiki/approaches/candidates.md`, `raw/sources/*`
+
+## [2026-09-08] design | GFN empty Warthog spike checklist (gate)
+
+- Added fail-fast G3 checklist: `docs/spike/gfn-empty-warthog-checklist.md` (prerequisite sign + 5 steps).
+- Live spike **not run** — blocked on Apple HID Virtual Device provisioning (`IOHIDUserDeviceCreate` / AMFI -413 on this host).
+- Filed blocked query: `wiki/queries/gfn-empty-warthog-spike.md`; indexed in `wiki/index.md`.
+- Pages touched: `docs/spike/gfn-empty-warthog-checklist.md`, `wiki/log.md`, `wiki/index.md`, `wiki/queries/gfn-empty-warthog-spike.md`

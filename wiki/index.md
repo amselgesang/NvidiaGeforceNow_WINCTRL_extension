@@ -54,6 +54,7 @@ Catalog of every wiki page. Update on every ingest. Read this first when answeri
 
 ## Queries
 
+- [queries/gfn-empty-warthog-spike.md](queries/gfn-empty-warthog-spike.md) — G3 empty spoof gate **(BLOCKED)** on provisioning
 - [queries/mac-without-windows.md](queries/mac-without-windows.md) — Mac-only feasibility (historical)
 - [queries/xplane-mac-winctrl-hid.md](queries/xplane-mac-winctrl-hid.md) — XP12 HID path on Mac
 
