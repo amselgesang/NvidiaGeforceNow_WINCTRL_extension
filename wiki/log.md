@@ -73,6 +73,12 @@ Append-only. Prefix: `## [YYYY-MM-DD] <kind> | <title>`
 - Seeded overview, entities, concepts, feasibility gates, open questions (Q1 blocking), approach stubs.
 - Pages touched: `wiki/overview.md`, `wiki/index.md`, `wiki/log.md`, `wiki/entities/*`, `wiki/concepts/*`, `wiki/constraints/feasibility-gates.md`, `wiki/design/open-questions.md`, `wiki/approaches/candidates.md`, `raw/sources/*`
 
+## [2026-09-08] query | HID Virtual Device signing vs provisioning
+
+- Clarified that `codesign` + entitlements file is insufficient; AMFI -413 needs an Apple-granted HID Virtual Device profile embedded in an `.app`.
+- Request path: developer.apple.com system-extension form → Virtual HID, then Mac App ID + Mac Development profile.
+- Pages: `wiki/queries/gfn-empty-warthog-spike.md`
+
 ## [2026-09-08] design | GFN empty Warthog spike checklist (gate)
 
 - Added fail-fast G3 checklist: `docs/spike/gfn-empty-warthog-checklist.md` (prerequisite sign + 5 steps).
