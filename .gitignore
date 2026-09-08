@@ -1,0 +1,6 @@
+# Archify visual-check screenshot sidecars (regenerable)
+wiki/diagrams/*.visual-check.*.png
+
+# OS / editor
+.DS_Store
+*.swp

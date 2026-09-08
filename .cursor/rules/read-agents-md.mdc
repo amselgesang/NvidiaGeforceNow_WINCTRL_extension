@@ -1,0 +1,18 @@
+---
+description: Always read AGENTS.md — wiki schema and working agreement for this repo
+alwaysApply: true
+---
+
+# Read AGENTS.md first
+
+At the start of every session — before editing the wiki, making design decisions,
+or implementing features — **read** [`AGENTS.md`](../../AGENTS.md) in full.
+
+It is the operating manual for this repository:
+
+- LLM wiki layout (`raw/` immutable, `wiki/` agent-owned, `AGENTS.md` schema)
+- Ingest / query / lint workflows and `log.md` format
+- Domain rules: separate GFN input path from MobiFlight/SimConnect path; fail-fast on blocked platforms
+- Archify diagrams live under `wiki/diagrams/`
+
+Do not invent wiki structure or skip bookkeeping (`index.md`, `log.md`) that AGENTS.md requires.

@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "NVS Remapper — Warthog Stick + Throttle Spoof",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "stick-path",
+        "label": "Stick path",
+        "focus": ["orion-stick", "bridge", "warthog-stick", "gfn", "cloud-msfs"],
+        "note": "WinWing joystick remapped to virtual Warthog Flight Stick."
+      },
+      {
+        "id": "throttle-path",
+        "label": "Throttle path",
+        "focus": ["ww-throttle", "bridge", "warthog-thr", "gfn", "cloud-msfs"],
+        "note": "WinWing throttle quadrant remapped to virtual Warthog Dual Throttle."
+      },
+      {
+        "id": "whitelist",
+        "label": "GFN whitelist",
+        "focus": ["warthog-stick", "warthog-thr", "gfn"],
+        "note": "Both sinks use official Warthog USB IDs on the GFN HOTAS list."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "orion-stick",
+      "type": "external",
+      "label": "WinWing Stick",
+      "sublabel": "Orion 4098:BEA8",
+      "pos": [40, 140],
+      "size": [150, 64]
+    },
+    {
+      "id": "ww-throttle",
+      "type": "external",
+      "label": "WinWing Throttle",
+      "sublabel": "quadrant HID",
+      "pos": [40, 320],
+      "size": [150, 64]
+    },
+    {
+      "id": "bridge",
+      "type": "backend",
+      "label": "NVS Bridge",
+      "sublabel": "dual remap",
+      "tag": "macOS",
+      "pos": [280, 230],
+      "size": [140, 70]
+    },
+    {
+      "id": "warthog-stick",
+      "type": "backend",
+      "label": "Virtual Warthog Stick",
+      "sublabel": "044F:0402",
+      "tag": "spoof",
+      "pos": [520, 140],
+      "size": [170, 64]
+    },
+    {
+      "id": "warthog-thr",
+      "type": "backend",
+      "label": "Virtual Warthog Throttle",
+      "sublabel": "044F:0404",
+      "tag": "spoof",
+      "pos": [520, 320],
+      "size": [170, 64]
+    },
+    {
+      "id": "gfn",
+      "type": "frontend",
+      "label": "GeForce NOW",
+      "sublabel": "HOTAS whitelist",
+      "pos": [780, 230],
+      "size": [140, 70]
+    },
+    {
+      "id": "cloud-msfs",
+      "type": "cloud",
+      "label": "Cloud MSFS",
+      "sublabel": "Warthog bindings",
+      "pos": [1000, 230],
+      "size": [140, 70]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Local Mac remapper",
+      "wraps": ["bridge", "warthog-stick", "warthog-thr", "gfn"]
+    },
+    {
+      "kind": "security-group",
+      "label": "NVIDIA cloud — inputs only",
+      "wraps": ["cloud-msfs"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "stick-in",
+      "from": "orion-stick",
+      "to": "bridge",
+      "label": "joystick HID",
+      "variant": "emphasis",
+      "labelDy": -29
+    },
+    {
+      "id": "thr-in",
+      "from": "ww-throttle",
+      "to": "bridge",
+      "label": "throttle HID",
+      "variant": "emphasis",
+      "labelDy": 59
+    },
+    {
+      "id": "stick-out",
+      "from": "bridge",
+      "to": "warthog-stick",
+      "label": "spoof Flight Stick",
+      "variant": "emphasis",
+      "labelDy": -29
+    },
+    {
+      "id": "thr-out",
+      "from": "bridge",
+      "to": "warthog-thr",
+      "label": "spoof Dual Throttle",
+      "variant": "emphasis",
+      "labelDy": 59
+    },
+    {
+      "id": "stick-gfn",
+      "from": "warthog-stick",
+      "to": "gfn",
+      "label": "whitelist HID"
+    },
+    {
+      "id": "thr-gfn",
+      "from": "warthog-thr",
+      "to": "gfn",
+      "label": "whitelist HID"
+    },
+    {
+      "id": "gfn-cloud",
+      "from": "gfn",
+      "to": "cloud-msfs",
+      "label": "streamed HOTAS",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Accepted sinks",
+      "items": [
+        "Warthog Flight Stick 044F:0402",
+        "Warthog Dual Throttle 044F:0404"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Spike",
+      "items": [
+        "Empty virtual 0402 + 0404 in GFN/MSFS first",
+        "Then map Orion stick / WinWing throttle"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Risks",
+      "items": [
+        "Descriptor match may be required",
+        "Vendor ID spoof is experimental / ToS-sensitive"
+      ]
+    }
+  ]
+}

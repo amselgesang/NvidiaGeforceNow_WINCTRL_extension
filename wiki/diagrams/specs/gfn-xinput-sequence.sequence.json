@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Warthog Spoof — Stick + Throttle Paths",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [960, 580],
+    "column_fit": "spread",
+    "views": [
+      {
+        "id": "stick",
+        "label": "Stick",
+        "focus": ["pilot", "ww-stick", "bridge", "wh-stick", "gfn"],
+        "note": "Joystick HID becomes virtual Warthog Flight Stick."
+      },
+      {
+        "id": "throttle",
+        "label": "Throttle",
+        "focus": ["pilot", "ww-thr", "bridge", "wh-thr", "gfn"],
+        "note": "Throttle quadrant becomes virtual Warthog Dual Throttle."
+      },
+      {
+        "id": "cloud",
+        "label": "Cloud",
+        "focus": ["gfn", "cloud", "pilot"],
+        "note": "GFN forwards both whitelist devices into MSFS."
+      }
+    ]
+  },
+  "participants": [
+    { "id": "pilot", "type": "external", "label": "Pilot", "sublabel": "hands" },
+    { "id": "ww-stick", "type": "external", "label": "WW Stick", "sublabel": "Orion" },
+    { "id": "ww-thr", "type": "external", "label": "WW Throttle", "sublabel": "quadrant" },
+    { "id": "bridge", "type": "backend", "label": "NVS Bridge", "sublabel": "dual map" },
+    { "id": "wh-stick", "type": "backend", "label": "Warthog Stick", "sublabel": "0402" },
+    { "id": "wh-thr", "type": "backend", "label": "Warthog Thr", "sublabel": "0404" },
+    { "id": "gfn", "type": "frontend", "label": "GFN Mac", "sublabel": "HOTAS" },
+    { "id": "cloud", "type": "cloud", "label": "Cloud MSFS", "sublabel": "session" }
+  ],
+  "segments": [
+    { "from": 145, "to": 230, "label": "Capture" },
+    { "from": 240, "to": 340, "label": "Spoof" },
+    { "from": 350, "to": 440, "label": "Stream" }
+  ],
+  "messages": [
+    { "id": "move-stick", "from": "pilot", "to": "ww-stick", "y": 165, "label": "move stick", "variant": "emphasis" },
+    { "id": "move-thr", "from": "pilot", "to": "ww-thr", "y": 195, "label": "move throttle", "variant": "emphasis" },
+    { "id": "hid-stick", "from": "ww-stick", "to": "bridge", "y": 225, "label": "joystick HID", "variant": "default" },
+    { "id": "hid-thr", "from": "ww-thr", "to": "bridge", "y": 255, "label": "throttle HID", "variant": "default" },
+    { "id": "spoof-s", "from": "bridge", "to": "wh-stick", "y": 295, "label": "update 0402", "variant": "emphasis" },
+    { "id": "spoof-t", "from": "bridge", "to": "wh-thr", "y": 325, "label": "update 0404", "variant": "emphasis" },
+    { "id": "fwd", "from": "gfn", "to": "cloud", "y": 375, "label": "forward both HOTAS", "variant": "emphasis" },
+    { "id": "fb", "from": "cloud", "to": "pilot", "y": 415, "label": "video + controls", "variant": "return" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Sinks",
+      "items": ["044F:0402 Flight Stick", "044F:0404 Dual Throttle"]
+    },
+    {
+      "dot": "rose",
+      "title": "Spike gate",
+      "items": ["Empty spoofs must show in MSFS", "Else abort / Xbox fallback"]
+    }
+  ]
+}
