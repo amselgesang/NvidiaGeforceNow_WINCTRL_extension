@@ -7,6 +7,8 @@ with centered axes and no WinCTRL input attached.
 **Stop condition:** Do not start Task 5 until **both** devices appear in stock GeForce NOW
 → cloud MSFS **Controls**. If either is missing, stop the Warthog path.
 
+**Platform:** macOS 13+ (Apple Silicon expected).
+
 ---
 
 ## Prerequisite — sign with HID Virtual Device entitlement
@@ -32,13 +34,12 @@ returns **-413** (“No matching profile found”). Ad-hoc signing alone is not 
 
 ## Checklist
 
-1. **Start spike:** run the signed binary:
+1. **Start spike:** run the **signed** binary directly — do **not** use `swift run` after
+   signing (it rebuilds and drops the entitlement signature):
 
    ```bash
-   swift run NVSBridge spike-both
+   .build/debug/NVSBridge spike-both
    ```
-
-   (Or launch `.build/debug/NVSBridge spike-both` after `scripts/sign-nvsbridge.sh`.)
 
    Expect stdout: `published 044F:0402` and `published 044F:0404`. Process waits for Enter;
    leave it running through steps 2–4.
@@ -61,7 +62,7 @@ returns **-413** (“No matching profile found”). Ad-hoc signing alone is not 
 
    - **Both Y** → G3 gate passed; proceed to Task 5 (Orion HID reader + remap).
    - **Either N** → **STOP** Warthog path. Optionally run **one** Xbox-class virtual pad
-     fallback spike (G2); do **not** patch or modify GFN. File outcome under
+     fallback spike (G2), then stop; do **not** patch or modify GFN. File outcome under
      `wiki/queries/gfn-empty-warthog-spike.md`.
 
 ---

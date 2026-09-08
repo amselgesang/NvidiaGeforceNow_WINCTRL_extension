@@ -26,11 +26,16 @@ run successfully here.
 | Throttle `044F:0404` | **(TODO)** |
 
 - **Both Y** → G3 passed; proceed to Orion remap (Task 5).
-- **Either N** → stop Warthog path; optional one Xbox fallback (G2); no GFN patch.
+- **Either N** → stop Warthog path; optional one Xbox fallback (G2), then stop; no GFN patch.
 
-## Run command (after sign)
+**Platform:** macOS 13+ (Apple Silicon expected).
+
+## Run command (build → sign → run signed binary)
+
+Do **not** use `swift run` after signing — it rebuilds and drops the entitlement signature.
 
 ```bash
+swift build
 scripts/sign-nvsbridge.sh "Developer ID Application: …"
-swift run NVSBridge spike-both
+.build/debug/NVSBridge spike-both
 ```
