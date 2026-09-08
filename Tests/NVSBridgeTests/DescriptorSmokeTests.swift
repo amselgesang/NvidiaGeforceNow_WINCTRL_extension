@@ -13,6 +13,7 @@ final class DescriptorSmokeTests: XCTestCase {
 
         XCTAssertNotNil(message)
         XCTAssertTrue(message?.contains("com.apple.developer.hid.virtual.device") == true)
+        XCTAssertTrue(message?.contains("provisioning profile") == true)
         XCTAssertTrue(message?.contains("scripts/sign-nvsbridge.sh") == true)
     }
 }

@@ -10,6 +10,13 @@ if [[ -z "$identity" ]]; then
     cat >&2 <<'EOF'
 usage: scripts/sign-nvsbridge.sh SIGNING_IDENTITY [BINARY]
 
+Embeds com.apple.developer.hid.virtual.device and re-signs the built binary.
+
+Ad-hoc or local signing alone is NOT enough for virtual HID publication. An eligible
+Apple Developer provisioning profile with the HID Virtual Device capability is
+required. Without it, AMFI rejects the executable at load time ("No matching profile
+found") and IOHIDUserDevice creation remains blocked.
+
 Build first with `swift build`, then pass an identity listed by:
   security find-identity -v -p codesigning
 
