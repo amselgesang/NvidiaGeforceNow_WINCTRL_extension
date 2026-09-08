@@ -2,9 +2,23 @@ import Foundation
 import IOKit.hid
 import Darwin.Mach
 
-enum VirtualHIDPublisherError: Error {
+enum VirtualHIDPublisherError: LocalizedError {
     case deviceCreationFailed
     case initialReportFailed(IOReturn)
+
+    var errorDescription: String? {
+        switch self {
+        case .deviceCreationFailed:
+            return """
+            IOHIDUserDevice creation was rejected. NVSBridge must be signed with the \
+            com.apple.developer.hid.virtual.device entitlement. Run \
+            scripts/sign-nvsbridge.sh after swift build, then launch \
+            .build/debug/NVSBridge spike-stick.
+            """
+        case let .initialReportFailed(result):
+            return "The initial centered HID report failed with IOReturn \(result)."
+        }
+    }
 }
 
 final class VirtualHIDPublisher {

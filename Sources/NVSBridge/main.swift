@@ -8,7 +8,9 @@ case "spike-stick":
         print("published 044F:0402")
         _ = readLine()
     } catch {
-        FileHandle.standardError.write(Data("failed to publish Warthog stick: \(error)\n".utf8))
+        FileHandle.standardError.write(
+            Data("failed to publish Warthog stick: \(error.localizedDescription)\n".utf8)
+        )
         exit(EXIT_FAILURE)
     }
 default:
