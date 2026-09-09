@@ -1,6 +1,9 @@
 # Archify visual-check screenshot sidecars (regenerable)
 wiki/diagrams/*.visual-check.*.png
 
+# SwiftPM / Xcode
+.build/
+
 # OS / editor
 .DS_Store
 *.swp
