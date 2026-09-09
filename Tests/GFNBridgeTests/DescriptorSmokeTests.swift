@@ -1,5 +1,5 @@
 import XCTest
-@testable import NVSBridge
+@testable import GFNBridge
 
 final class DescriptorSmokeTests: XCTestCase {
     func testWarthogStickDescriptorNonEmpty() {
@@ -18,6 +18,6 @@ final class DescriptorSmokeTests: XCTestCase {
         XCTAssertNotNil(message)
         XCTAssertTrue(message?.contains("com.apple.developer.hid.virtual.device") == true)
         XCTAssertTrue(message?.contains("provisioning profile") == true)
-        XCTAssertTrue(message?.contains("scripts/sign-nvsbridge.sh") == true)
+        XCTAssertTrue(message?.contains("scripts/sign-gfnbridge.sh") == true)
     }
 }

@@ -14,11 +14,11 @@ Checklist: [docs/spike/gfn-empty-warthog-checklist.md](../../docs/spike/gfn-empt
 ## Blocker (this machine)
 
 Live virtual HID publication requires an Apple Developer provisioning profile with
-`com.apple.developer.hid.virtual.device`. Unsigned / ad-hoc `NVSBridge` fails at
+`com.apple.developer.hid.virtual.device`. Unsigned / ad-hoc `GFNBridge` fails at
 `IOHIDUserDeviceCreate`; AMFI rejects with **-413**. The empty-spoof spike has **not** been
 run successfully here.
 
-`codesign` with `Entitlements/NVSBridge.entitlements` is **not** enough by itself. A
+`codesign` with `Entitlements/GFNBridge.entitlements` is **not** enough by itself. A
 Developer ID stamp of that entitlement already verified on disk; AMFI still killed the
 process because no provisioning profile **authorizes** the restricted entitlement.
 
@@ -26,8 +26,8 @@ process because no provisioning profile **authorizes** the restricted entitlemen
 
 | Piece | Role |
 |---|---|
-| `Entitlements/NVSBridge.entitlements` | Asks for HID Virtual Device (`com.apple.developer.hid.virtual.device`) |
-| `scripts/sign-nvsbridge.sh` | Stamps that entitlement onto `.build/debug/NVSBridge` |
+| `Entitlements/GFNBridge.entitlements` | Asks for HID Virtual Device (`com.apple.developer.hid.virtual.device`) |
+| `scripts/sign-gfnbridge.sh` | Stamps that entitlement onto `.build/debug/GFNBridge` |
 | **Provisioning profile** | Apple’s permission slip: this Team + this App ID + this Mac may use that entitlement |
 
 Without the profile, launch dies before `main` (`taskgated-helper`: no eligible profiles;
@@ -45,7 +45,7 @@ AMFI **-413**).
 
 **3. After Apple grants it**, in [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list):
 
-1. Create a **Mac** App ID (explicit bundle ID, e.g. `com.yourteam.nvsbridge`) — not a wildcard.
+1. Create a **Mac** App ID (explicit bundle ID, e.g. `com.yourteam.gfnbridge`) — not a wildcard.
 2. Enable **HID Virtual Device** on that App ID (the checkbox only appears after grant).
 3. Create a **Mac Development** provisioning profile for that App ID, including **this Mac**.
 4. Download the `.provisionprofile`.
@@ -54,17 +54,17 @@ Use an **Apple Development** identity for local spike runs, not Developer ID, un
 explicitly granted the entitlement for Developer ID distribution (restricted entitlements
 usually do not).
 
-**4. Embed the profile** (bare SwiftPM binaries do not). Wrap the signed `NVSBridge` in a
+**4. Embed the profile** (bare SwiftPM binaries do not). Wrap the signed `GFNBridge` in a
 tiny `.app`:
 
 ```text
-NVSBridge.app/Contents/MacOS/NVSBridge          # copy of .build/debug/NVSBridge
-NVSBridge.app/Contents/Info.plist               # CFBundleIdentifier = that App ID
-NVSBridge.app/Contents/embedded.provisionprofile
+GFNBridge.app/Contents/MacOS/GFNBridge          # copy of .build/debug/GFNBridge
+GFNBridge.app/Contents/Info.plist               # CFBundleIdentifier = that App ID
+GFNBridge.app/Contents/embedded.provisionprofile
 ```
 
-Then sign the **app** with the Development identity + `Entitlements/NVSBridge.entitlements`.
-Run `NVSBridge.app/Contents/MacOS/NVSBridge spike-both` (or `open` the app with args).
+Then sign the **app** with the Development identity + `Entitlements/GFNBridge.entitlements`.
+Run `GFNBridge.app/Contents/MacOS/GFNBridge spike-both` (or `open` the app with args).
 
 Do **not** use `swift run` after signing — it rebuilds an unsigned binary.
 
@@ -92,6 +92,6 @@ Do **not** use `swift run` after signing — it rebuilds and drops the entitleme
 
 ```bash
 swift build
-scripts/sign-nvsbridge.sh "Developer ID Application: …"
-.build/debug/NVSBridge spike-both
+scripts/sign-gfnbridge.sh "Developer ID Application: …"
+.build/debug/GFNBridge spike-both
 ```

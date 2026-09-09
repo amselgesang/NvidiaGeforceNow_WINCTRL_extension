@@ -14,8 +14,8 @@ Catalog of every wiki page. Update on every ingest. Read this first when answeri
 - [overview.md](overview.md) — project brief, goals, current status
 - [log.md](log.md) — chronological ingest/query/design record
 - [../AGENTS.md](../AGENTS.md) — wiki schema and working agreement
-- [../docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md](../docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md) — approved design spec
-- [../docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md](../docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md) — implementation plan
+- [../docs/superpowers/specs/2026-09-08-gfn-warthog-spoof-remapper-design.md](../docs/superpowers/specs/2026-09-08-gfn-warthog-spoof-remapper-design.md) — approved design spec
+- [../docs/superpowers/plans/2026-09-08-gfn-warthog-spoof-remapper.md](../docs/superpowers/plans/2026-09-08-gfn-warthog-spoof-remapper.md) — implementation plan
 
 ## Concepts
 
@@ -25,7 +25,7 @@ Catalog of every wiki page. Update on every ingest. Read this first when answeri
 
 ## Entities
 
-- [entities/geforce-now.md](entities/geforce-now.md) — GFN / NVS streaming platform
+- [entities/geforce-now.md](entities/geforce-now.md) — GFN streaming platform
 - [entities/winctrl.md](entities/winctrl.md) — WinCTRL / WinWing hardware
 - [entities/mobiflight.md](entities/mobiflight.md) — MobiFlight (research only; deferred)
 

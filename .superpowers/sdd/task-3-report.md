@@ -53,7 +53,7 @@ Executed 4 tests, with 0 failures (0 unexpected)
 Live publication was attempted:
 
 ```text
-.build/debug/NVSBridge spike-throttle </dev/null
+.build/debug/GFNBridge spike-throttle </dev/null
 failed to publish Warthog throttle: IOHIDUserDevice creation was rejected...
 exit_status=1
 ```

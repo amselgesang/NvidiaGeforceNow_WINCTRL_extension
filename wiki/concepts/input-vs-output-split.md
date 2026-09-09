@@ -7,7 +7,7 @@ tags: [concept, architecture]
 
 # Input vs output split
 
-WinCTRL + MobiFlight problems on NVS are **two systems**, not one.
+WinCTRL + MobiFlight problems on GFN are **two systems**, not one.
 
 | Direction | Examples | Needs |
 |---|---|---|

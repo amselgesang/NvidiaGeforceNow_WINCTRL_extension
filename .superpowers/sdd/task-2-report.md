@@ -45,17 +45,17 @@ Executed 2 tests, with 0 failures (0 unexpected)
 
 ## Files Changed
 
-- `Sources/NVSBridge/HID/WarthogDescriptors.swift`
+- `Sources/GFNBridge/HID/WarthogDescriptors.swift`
   - Added a non-empty Generic Desktop Joystick descriptor with signed 16-bit X/Y axes
     and 32 buttons.
-- `Sources/NVSBridge/HID/VirtualHIDPublisher.swift`
+- `Sources/GFNBridge/HID/VirtualHIDPublisher.swift`
   - Added `VirtualHIDPublisher.publishWarthogStick(centered:)`.
   - Creates an `IOHIDUserDevice` with VID `0x044F`, PID `0x0402`, Warthog-like
     manufacturer/product strings, and the stick descriptor.
   - Retains the device and sends an eight-byte centered idle report when requested.
-- `Sources/NVSBridge/main.swift`
+- `Sources/GFNBridge/main.swift`
   - Added the `spike-stick` command, success message, Enter wait, and error reporting.
-- `Tests/NVSBridgeTests/DescriptorSmokeTests.swift`
+- `Tests/GFNBridgeTests/DescriptorSmokeTests.swift`
   - Added the exact descriptor/VID/PID smoke assertions from the task brief.
 
 No throttle descriptor, throttle device ID, throttle CLI command, Orion mapping change,
@@ -66,7 +66,7 @@ dependency, Package manifest change, or wiki edit was added.
 The binary compiled, but this host rejected virtual HID creation:
 
 ```text
-.build/debug/NVSBridge spike-stick
+.build/debug/GFNBridge spike-stick
 failed to publish Warthog stick: deviceCreationFailed
 ```
 
@@ -105,9 +105,9 @@ ioreg -c IOHIDDevice -r | rg -i "0402|Warthog"
 
 ## Fix
 
-- Added `Entitlements/NVSBridge.entitlements` with
+- Added `Entitlements/GFNBridge.entitlements` with
   `com.apple.developer.hid.virtual.device = true`.
-- Added executable `scripts/sign-nvsbridge.sh`, which signs the SwiftPM binary with a
+- Added executable `scripts/sign-gfnbridge.sh`, which signs the SwiftPM binary with a
   supplied signing identity, verifies the signature, and prints the embedded entitlements.
 - Made `deviceCreationFailed` explain the required entitlement and exact signing script.
 - Added a regression test for that actionable error. Its RED result was:
@@ -134,16 +134,16 @@ Command:
 
 ```text
 swift build &&
-scripts/sign-nvsbridge.sh 'Developer ID Application: Tamas Marton (Z4JDQGR29E)'
+scripts/sign-gfnbridge.sh 'Developer ID Application: Tamas Marton (Z4JDQGR29E)'
 ```
 
 Exact relevant output:
 
 ```text
 Build complete! (0.14s)
-.build/debug/NVSBridge: replacing existing signature
-.build/debug/NVSBridge: valid on disk
-.build/debug/NVSBridge: satisfies its Designated Requirement
+.build/debug/GFNBridge: replacing existing signature
+.build/debug/GFNBridge: valid on disk
+.build/debug/GFNBridge: satisfies its Designated Requirement
 [Dict]
     [Key] com.apple.developer.hid.virtual.device
     [Value]
@@ -153,7 +153,7 @@ Build complete! (0.14s)
 Signed publication command and result:
 
 ```text
-.build/debug/NVSBridge spike-stick </dev/null
+.build/debug/GFNBridge spike-stick </dev/null
 exit_status=137
 ```
 
@@ -161,8 +161,8 @@ The process was killed by macOS before Swift `main` could print an error. Unifie
 evidence for that exact launch:
 
 ```text
-taskgated-helper: Disallowing NVSBridge because no eligible provisioning profiles found
-amfid: NVSBridge not valid: Error Domain=AppleMobileFileIntegrityError Code=-413
+taskgated-helper: Disallowing GFNBridge because no eligible provisioning profiles found
+amfid: GFNBridge not valid: Error Domain=AppleMobileFileIntegrityError Code=-413
 "No matching profile found"
 kernel: Code has restricted entitlements, but the validation of its code signature failed.
 ```
@@ -177,10 +177,10 @@ exit_status=1
 The improved unsigned/ad-hoc failure path was also exercised:
 
 ```text
-failed to publish Warthog stick: IOHIDUserDevice creation was rejected. NVSBridge must
+failed to publish Warthog stick: IOHIDUserDevice creation was rejected. GFNBridge must
 be signed with the com.apple.developer.hid.virtual.device entitlement. Run
-scripts/sign-nvsbridge.sh after swift build, then launch
-.build/debug/NVSBridge spike-stick.
+scripts/sign-gfnbridge.sh after swift build, then launch
+.build/debug/GFNBridge spike-stick.
 exit_status=1
 ```
 
@@ -189,3 +189,37 @@ exit_status=1
 The available Developer ID identity can embed and cryptographically verify the restricted
 entitlement, but this host has no eligible provisioning profile authorizing it. AMFI
 therefore terminates the executable at load time, and IORegistry never shows 0402/Warthog.
+
+---
+
+# Important Review Fix: Provisioning Profile Truth
+
+**Status:** DONE_WITH_CONCERNS
+
+## Fix
+
+- Updated `scripts/sign-gfnbridge.sh` usage text: ad-hoc/local signing is not enough;
+  an eligible Apple Developer provisioning profile with the HID Virtual Device capability
+  is required; without it AMFI rejects with "No matching profile found".
+- Updated `VirtualHIDPublisherError.deviceCreationFailed` to state the same requirement
+  and that publication remains blocked until the profile is available.
+- Extended the regression test to assert the error mentions "provisioning profile".
+
+## Commit
+
+- `a800f5e fix: document HID virtual-device provisioning requirement`
+
+## Required Tests
+
+```text
+swift test --filter DescriptorSmokeTests
+Executed 2 tests, with 0 failures (0 unexpected)
+
+swift test
+Executed 3 tests, with 0 failures (0 unexpected)
+```
+
+## Concern
+
+Publication remains blocked on this host until Apple grants an eligible provisioning
+profile for `com.apple.developer.hid.virtual.device`. No fake working path was added.

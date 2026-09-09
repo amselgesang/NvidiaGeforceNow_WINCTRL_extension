@@ -21,7 +21,7 @@ Unchanged.
 
 ## D5 — Spoof Warthog Flight Stick + Dual Throttle
 
-**Decision:** NVS Bridge publishes **two** virtual HID devices that impersonate
+**Decision:** GFN Bridge publishes **two** virtual HID devices that impersonate
 GFN-whitelisted Thrustmaster Warthog hardware:
 
 | Physical role | Virtual sink (spoof) | USB ID |

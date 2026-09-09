@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "NVS Remapper — Warthog Stick + Throttle Spoof",
+    "title": "GFN Remapper — Warthog Stick + Throttle Spoof",
     "locale": "en",
     "quality_profile": "showcase",
     "views": [
@@ -46,7 +46,7 @@
     {
       "id": "bridge",
       "type": "backend",
-      "label": "NVS Bridge",
+      "label": "GFN Bridge",
       "sublabel": "dual remap",
       "tag": "macOS",
       "pos": [280, 230],

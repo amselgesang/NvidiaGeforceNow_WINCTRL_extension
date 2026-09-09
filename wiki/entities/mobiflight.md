@@ -19,7 +19,7 @@ Open ecosystem for mapping cockpit hardware to flight sims. Components:
 ## Why users care here
 
 The user already configures WinCTRL hardware via MobiFlight profiles for local simulator
-games. The desired "connector to NVS" ideally preserves that workflow.
+games. The desired "connector to GFN" ideally preserves that workflow.
 
 ## Remote operation (important nuance)
 

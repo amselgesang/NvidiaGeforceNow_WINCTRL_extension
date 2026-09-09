@@ -32,7 +32,7 @@
     { "id": "pilot", "type": "external", "label": "Pilot", "sublabel": "hands" },
     { "id": "ww-stick", "type": "external", "label": "WW Stick", "sublabel": "Orion" },
     { "id": "ww-thr", "type": "external", "label": "WW Throttle", "sublabel": "quadrant" },
-    { "id": "bridge", "type": "backend", "label": "NVS Bridge", "sublabel": "dual map" },
+    { "id": "bridge", "type": "backend", "label": "GFN Bridge", "sublabel": "dual map" },
     { "id": "wh-stick", "type": "backend", "label": "Warthog Stick", "sublabel": "0402" },
     { "id": "wh-thr", "type": "backend", "label": "Warthog Thr", "sublabel": "0404" },
     { "id": "gfn", "type": "frontend", "label": "GFN Mac", "sublabel": "HOTAS" },

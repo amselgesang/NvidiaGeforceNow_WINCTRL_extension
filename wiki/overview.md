@@ -5,7 +5,7 @@ updated: 2026-09-08
 tags: [meta, overview]
 ---
 
-# NVS Extension — Overview
+# GFN Extension — Overview
 
 ## One-liner
 
@@ -16,8 +16,8 @@ HOTAS whitelist forwards them into cloud MSFS.
 ## Current status — 2026-09-08
 
 - **D5 approved;** design spec committed on branch `cursor/warthog-spoof-remapper-design`.
-- Spec: [2026-09-08-nvs-warthog-spoof-remapper-design.md](../docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md)
-- Plan: [2026-09-08-nvs-warthog-spoof-remapper.md](../docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md)
+- Spec: [2026-09-08-gfn-warthog-spoof-remapper-design.md](../docs/superpowers/specs/2026-09-08-gfn-warthog-spoof-remapper-design.md)
+- Plan: [2026-09-08-gfn-warthog-spoof-remapper.md](../docs/superpowers/plans/2026-09-08-gfn-warthog-spoof-remapper.md)
 - Diagrams: [overview](diagrams/warthog-spoof-overview.html) · [sequence](diagrams/warthog-spoof-sequence.html)
 - MobiFlight deferred (D3). Wiki linted for D5; plan ready.
 - **Next:** execute plan Task 1 (package scaffold) → Tasks 2–4 (empty Warthog GFN spike gate).

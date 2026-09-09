@@ -40,5 +40,5 @@ case "spike-both":
         exit(EXIT_FAILURE)
     }
 default:
-    print("Usage: NVSBridge spike-stick|spike-throttle|spike-both")
+    print("Usage: GFNBridge spike-stick|spike-throttle|spike-both")
 }

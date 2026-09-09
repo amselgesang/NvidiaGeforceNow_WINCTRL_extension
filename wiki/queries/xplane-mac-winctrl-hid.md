@@ -48,7 +48,7 @@ WinWing Orion (USB HID joystick)
 - Linux docs stress: without the plugin you still get **basic joystick** behaviour; plugin unlocks displays/LEDs/aircraft-specific mappings.
 - Emvisio summary: *“Axes (throttle levers, joystick) are deliberately left to X-Plane's built-in joystick configuration.”*
 
-## What this means for NVS / GeForce NOW
+## What this means for GFN / GeForce NOW
 
 | Consumer | Sees Orion as… | Result |
 |---|---|---|
@@ -56,9 +56,9 @@ WinWing Orion (USB HID joystick)
 | X-Plane 12 | Joystick device (+ optional winctrl HID client) | Axes bindable locally |
 | GeForce NOW native Mac | Generic / non-whitelist stick | **Typically ignored** for cloud input |
 
-So X-Plane working on Mac **proves Mac can read the hardware as a joystick**; it does **not** prove GFN will forward that same HID device. NVS remaps to Warthog whitelist IDs ([D5](../design/decisions.md)).
+So X-Plane working on Mac **proves Mac can read the hardware as a joystick**; it does **not** prove GFN will forward that same HID device. GFN remaps to Warthog whitelist IDs ([D5](../design/decisions.md)).
 
-## Practical takeaway for Mac-native NVS Bridge
+## Practical takeaway for Mac-native GFN Bridge
 
 1. **Input source:** read the same IOHID device X-Plane uses (`0x4098:0xBEA8`, Joystick usage) — no Windows required to *sample* axes/buttons.
 2. **GFN sink:** still must present something GFN accepts (not “raw Orion joystick”).

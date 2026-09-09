@@ -1,4 +1,4 @@
-# NVS Bridge — Warthog Spoof Remapper Design
+# GFN Bridge — Warthog Spoof Remapper Design
 
 **Date:** 2026-09-08  
 **Status:** Approved for implementation planning (user sign-off 2026-09-08)  
@@ -10,7 +10,7 @@ GeForce NOW on macOS only forwards a whitelist of flight peripherals (including 
 
 ## Goal
 
-Build **NVS Bridge** (macOS): read WinWing joystick and throttle HID, republish as **two** virtual devices that impersonate GFN-whitelisted Warthog units:
+Build **GFN Bridge** (macOS): read WinWing joystick and throttle HID, republish as **two** virtual devices that impersonate GFN-whitelisted Warthog units:
 
 | Physical role | Virtual spoof | USB ID |
 |---|---|---|
@@ -31,7 +31,7 @@ Path: physical HID → bridge mapper → virtual Warthog HID pair → stock GFN 
 
 ```
 WinWing stick HID (4098:BEA8) ──► ┐
-                                  ├─► NVS Bridge ─┬─► Virtual Warthog Stick  (044F:0402) ─┐
+                                  ├─► GFN Bridge ─┬─► Virtual Warthog Stick  (044F:0402) ─┐
 WinWing throttle HID (e.g. BD64) ► ┘              └─► Virtual Warthog Throttle (044F:0404) ┼─► GFN ─► Cloud MSFS
 ```
 

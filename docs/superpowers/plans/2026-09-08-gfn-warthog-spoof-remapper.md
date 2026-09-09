@@ -1,8 +1,8 @@
-# NVS Warthog Spoof Remapper Implementation Plan
+# GFN Warthog Spoof Remapper Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ship a macOS NVS Bridge that reads WinWing stick/throttle HID and publishes virtual Thrustmaster Warthog Flight Stick (`044F:0402`) and Dual Throttle (`044F:0404`) for GeForce NOW.
+**Goal:** Ship a macOS GFN Bridge that reads WinWing stick/throttle HID and publishes virtual Thrustmaster Warthog Flight Stick (`044F:0402`) and Dual Throttle (`044F:0404`) for GeForce NOW.
 
 **Architecture:** Swift package CLI — HID readers → JSON profile mapper → dual `IOHIDUserDevice` publishers. Fail-fast empty-spoof spike before Orion mapping.
 
@@ -15,13 +15,13 @@
 - Source stick: Orion `0x4098:0xBEA8` (probed); throttle PID confirmed on attach
 - No MobiFlight / SimConnect / GFN client patches
 - On empty-spoof GFN failure: one Xbox-HID fallback attempt max, then stop
-- Design spec: `docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md`
+- Design spec: `docs/superpowers/specs/2026-09-08-gfn-warthog-spoof-remapper-design.md`
 
 ## File structure
 
 ```
 Package.swift
-Sources/NVSBridge/
+Sources/GFNBridge/
   main.swift                 # CLI entry
   HID/
     DeviceIDs.swift          # VID/PID constants
@@ -36,7 +36,7 @@ Sources/NVSBridge/
 Resources/profiles/
   orion-stick-to-warthog.json
   winwing-throttle-to-warthog.json
-Tests/NVSBridgeTests/
+Tests/GFNBridgeTests/
   MapperTests.swift
   ProfileTests.swift
   DescriptorSmokeTests.swift
@@ -50,11 +50,11 @@ docs/spike/
 
 **Files:**
 - Create: `Package.swift`
-- Create: `Sources/NVSBridge/Mapping/Profile.swift`
-- Create: `Sources/NVSBridge/Mapping/Mapper.swift`
-- Create: `Sources/NVSBridge/HID/DeviceIDs.swift`
-- Create: `Tests/NVSBridgeTests/MapperTests.swift`
-- Create: `Sources/NVSBridge/main.swift`
+- Create: `Sources/GFNBridge/Mapping/Profile.swift`
+- Create: `Sources/GFNBridge/Mapping/Mapper.swift`
+- Create: `Sources/GFNBridge/HID/DeviceIDs.swift`
+- Create: `Tests/GFNBridgeTests/MapperTests.swift`
+- Create: `Sources/GFNBridge/main.swift`
 
 **Interfaces:**
 - Produces: `struct AxisMap`, `struct Profile`, `func mapSample(_:HIDSample, profile:) -> WarthogReport`
@@ -63,7 +63,7 @@ docs/spike/
 
 ```swift
 import XCTest
-@testable import NVSBridge
+@testable import GFNBridge
 
 final class MapperTests: XCTestCase {
     func testOrionXYMapsToWarthogStickXY() {
@@ -87,11 +87,11 @@ Expected: FAIL (module/types missing)
 // swift-tools-version: 5.9
 import PackageDescription
 let package = Package(
-    name: "NVSBridge",
+    name: "GFNBridge",
     platforms: [.macOS(.v13)],
     targets: [
-        .executableTarget(name: "NVSBridge", path: "Sources/NVSBridge"),
-        .testTarget(name: "NVSBridgeTests", dependencies: ["NVSBridge"], path: "Tests/NVSBridgeTests"),
+        .executableTarget(name: "GFNBridge", path: "Sources/GFNBridge"),
+        .testTarget(name: "GFNBridgeTests", dependencies: ["GFNBridge"], path: "Tests/GFNBridgeTests"),
     ]
 )
 ```
@@ -107,7 +107,7 @@ Expected: PASS
 
 ```bash
 git add Package.swift Sources Tests
-git commit -m "feat: scaffold NVSBridge package with stick mapper tests"
+git commit -m "feat: scaffold GFNBridge package with stick mapper tests"
 ```
 
 ---
@@ -115,11 +115,11 @@ git commit -m "feat: scaffold NVSBridge package with stick mapper tests"
 ### Task 2: Warthog descriptor pack + empty stick publisher
 
 **Files:**
-- Create: `Sources/NVSBridge/HID/WarthogDescriptors.swift`
-- Create: `Sources/NVSBridge/HID/VirtualHIDPublisher.swift`
-- Create: `Sources/NVSBridge/HID/DeviceIDs.swift` (if not already)
-- Create: `Tests/NVSBridgeTests/DescriptorSmokeTests.swift`
-- Modify: `Sources/NVSBridge/main.swift` — `nvs-bridge spike-stick`
+- Create: `Sources/GFNBridge/HID/WarthogDescriptors.swift`
+- Create: `Sources/GFNBridge/HID/VirtualHIDPublisher.swift`
+- Create: `Sources/GFNBridge/HID/DeviceIDs.swift` (if not already)
+- Create: `Tests/GFNBridgeTests/DescriptorSmokeTests.swift`
+- Modify: `Sources/GFNBridge/main.swift` — `gfn-bridge spike-stick`
 
 **Interfaces:**
 - Produces: `VirtualHIDPublisher.publishWarthogStick(centered: Bool) throws`
@@ -147,7 +147,7 @@ Embed a minimal Generic Desktop Joystick HID report descriptor; set product/vend
 - `kIOHIDProductIDKey` = `0x0402`
 - `kIOHIDReportDescriptorKey` = descriptor data
 
-CLI: `swift run NVSBridge spike-stick` creates device, prints “published 044F:0402”, waits on Enter.
+CLI: `swift run GFNBridge spike-stick` creates device, prints “published 044F:0402”, waits on Enter.
 
 - [ ] **Step 4: Manual macOS check**
 
@@ -198,7 +198,7 @@ git commit -am "feat: publish empty virtual Warthog dual throttle"
 - [ ] **Step 1: Write checklist**
 
 Contents must include:
-1. Start `nvs-bridge spike-both`
+1. Start `gfn-bridge spike-both`
 2. Confirm both devices in macOS
 3. Launch stock GFN Mac → MSFS → Controls
 4. Record: stick listed Y/N; throttle listed Y/N
@@ -220,8 +220,8 @@ git commit -m "docs: add GFN empty Warthog spike checklist"
 ### Task 5: Orion HID reader
 
 **Files:**
-- Create: `Sources/NVSBridge/HID/HIDReader.swift`
-- Create: `Tests/NVSBridgeTests/HIDReaderParsingTests.swift` (parse fixture bytes)
+- Create: `Sources/GFNBridge/HID/HIDReader.swift`
+- Create: `Tests/GFNBridgeTests/HIDReaderParsingTests.swift` (parse fixture bytes)
 - Create: `Tests/Fixtures/orion-report-id1.bin` (captured or synthetic)
 
 **Interfaces:**
@@ -231,7 +231,7 @@ git commit -m "docs: add GFN empty Warthog spike checklist"
 
 - [ ] **Step 2: Implement reader with `IOHIDManager`; filter `0x4098:0xBEA8`
 
-- [ ] **Step 3: CLI `nvs-bridge read-orion` prints axes at 10 Hz**
+- [ ] **Step 3: CLI `gfn-bridge read-orion` prints axes at 10 Hz**
 
 - [ ] **Step 4: Commit**
 
@@ -245,7 +245,7 @@ git commit -am "feat: read Orion HID joystick samples"
 
 **Files:**
 - Create: `Resources/profiles/orion-stick-to-warthog.json`
-- Modify: `Mapper.swift`, `main.swift` — `nvs-bridge run --stick-only`
+- Modify: `Mapper.swift`, `main.swift` — `gfn-bridge run --stick-only`
 
 - [ ] **Step 1: Profile load test**
 
@@ -292,7 +292,7 @@ git commit -am "feat: map WinWing throttle to virtual Warthog 0404"
 ### Task 8: Status CLI + wiki bookkeeping
 
 **Files:**
-- Create: `Sources/NVSBridge/Status/BridgeStatus.swift`
+- Create: `Sources/GFNBridge/Status/BridgeStatus.swift`
 - Modify: `wiki/overview.md`, `wiki/log.md`
 - Modify: `README.md` — run instructions
 
@@ -318,7 +318,7 @@ git commit -am "docs: bridge status CLI and runbook"
 
 ## Execution handoff
 
-Plan complete at `docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md`.
+Plan complete at `docs/superpowers/plans/2026-09-08-gfn-warthog-spoof-remapper.md`.
 
 **1. Subagent-Driven (recommended)** — fresh subagent per task  
 **2. Inline Execution** — executing-plans in this session  

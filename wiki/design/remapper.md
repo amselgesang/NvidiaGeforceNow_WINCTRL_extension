@@ -12,8 +12,8 @@ Locked by [D5](decisions.md).
 ## Goal
 
 ```
-WinWing joystick HID  ──►  NVS Bridge  ──►  Virtual Warthog Flight Stick (044F:0402)
-WinWing throttle HID  ──►  NVS Bridge  ──►  Virtual Warthog Dual Throttle (044F:0404)
+WinWing joystick HID  ──►  GFN Bridge  ──►  Virtual Warthog Flight Stick (044F:0402)
+WinWing throttle HID  ──►  GFN Bridge  ──►  Virtual Warthog Dual Throttle (044F:0404)
                                               │
                                               ▼
                                     GeForce NOW Mac (HOTAS whitelist)

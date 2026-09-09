@@ -1,13 +1,13 @@
 ---
-title: Entity — GeForce NOW (NVS)
+title: Entity — GeForce NOW
 status: draft
 updated: 2026-09-08
-tags: [entity, gfn, nvs]
+tags: [entity, gfn]
 ---
 
-# GeForce NOW (NVS)
+# GeForce NOW
 
-Cloud game streaming service. In this project, **NVS** means the NVIDIA remote play /
+Cloud game streaming service. In this project, **GFN** means the NVIDIA remote play /
 GeForce NOW path the user wants WinCTRL + MobiFlight to reach.
 
 ## Relevant behavior for peripherals

@@ -1,7 +1,7 @@
-# NVS Extension
+# GFN Extension
 
 Research and design for bridging **WinCTRL** hardware / **MobiFlight** workflows into
-**GeForce NOW (NVS)** flight-sim sessions.
+**GeForce NOW (GFN)** flight-sim sessions.
 
 ## Source of truth
 

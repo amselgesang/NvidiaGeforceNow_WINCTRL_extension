@@ -1,4 +1,4 @@
-# AGENTS.md — NVS Extension Project Wiki Schema
+# AGENTS.md — GFN Extension Project Wiki Schema
 
 This file is the **operating manual** for any LLM agent working in this repository.
 Read it fully at the start of every session before touching the wiki, making design
@@ -6,9 +6,8 @@ decisions, or implementing features.
 
 ## What this project is
 
-**NVS Extension** explores whether (and how) we can connect **WinCTRL / WinWing**
+**GFN Extension** explores whether (and how) we can connect **WinCTRL / WinWing**
 cockpit hardware and the **MobiFlight** adapter stack to **NVIDIA GeForce NOW (GFN)**
-— referred to in this repo as **NVS** (NVIDIA streaming / GeForce NOW remote play) —
 for flight-simulator games that only natively accept a short whitelist of Thrustmaster
 and Logitech peripherals.
 

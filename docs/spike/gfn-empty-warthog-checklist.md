@@ -1,6 +1,6 @@
 # GFN empty Warthog spoof checklist (gate G3)
 
-Fail-fast gate before Orion HID remapping (Task 5+). NVS Bridge publishes two **empty**
+Fail-fast gate before Orion HID remapping (Task 5+). GFN Bridge publishes two **empty**
 virtual Thrustmaster Warthog devices — stick `044F:0402` and dual throttle `044F:0404` —
 with centered axes and no WinCTRL input attached.
 
@@ -23,10 +23,10 @@ returns **-413** (“No matching profile found”). Ad-hoc signing alone is not 
 2. Sign with a codesigning identity that has the entitlement embedded:
 
    ```bash
-   scripts/sign-nvsbridge.sh "Developer ID Application: Your Name (TEAMID)"
+   scripts/sign-gfnbridge.sh "Developer ID Application: Your Name (TEAMID)"
    ```
 
-   Default binary path: `.build/debug/NVSBridge`. Pass a third argument to override.
+   Default binary path: `.build/debug/GFNBridge`. Pass a third argument to override.
 
 3. Confirm the signed binary runs without the provisioning-profile error before continuing.
 
@@ -38,7 +38,7 @@ returns **-413** (“No matching profile found”). Ad-hoc signing alone is not 
    signing (it rebuilds and drops the entitlement signature):
 
    ```bash
-   .build/debug/NVSBridge spike-both
+   .build/debug/GFNBridge spike-both
    ```
 
    Expect stdout: `published 044F:0402` and `published 044F:0404`. Process waits for Enter;

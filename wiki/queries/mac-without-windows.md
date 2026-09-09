@@ -1,5 +1,5 @@
 ---
-title: Query — Can NVS Bridge work without Windows?
+title: Query — Can GFN Bridge work without Windows?
 status: draft
 updated: 2026-09-08
 tags: [query, macos, gfn, feasibility]
@@ -39,9 +39,9 @@ Silicon **if** GFN’s HID backend is used; stock GFN sometimes prefers
 `GameController.framework` and then **fails** to forward usable pad input (see
 `gfn-steam-controller-fix` — patches GFN, ToS/account risk).
 
-**Implication for NVS (current D5):**
+**Implication for GFN (current D5):**
 
-`WinCTRL HID → NVS Bridge (macOS) → virtual Warthog 0402+0404 → native GFN`
+`WinCTRL HID → GFN Bridge (macOS) → virtual Warthog 0402+0404 → native GFN`
 
 Xbox-compatible HID is **fallback only** if Warthog spoof fails detection. Empty
 Warthog devices must appear in cloud MSFS Controls before Orion mapping.
@@ -59,7 +59,7 @@ Official Mac GFN supports select Thrustmaster/Logitech devices. Does not help Wi
 
 | Goal | Path |
 |---|---|
-| v1 (locked) | Mac-native dual Warthog spoof — [plan](../../docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md) |
+| v1 (locked) | Mac-native dual Warthog spoof — [plan](../../docs/superpowers/plans/2026-09-08-gfn-warthog-spoof-remapper.md) |
 | If GFN rejects Warthog IDs | One Xbox HID fallback attempt, then stop |
 | Honest expectation | Unknown until empty `0402`+`0404` appear in cloud MSFS Controls |
 

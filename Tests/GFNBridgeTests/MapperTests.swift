@@ -1,5 +1,5 @@
 import XCTest
-@testable import NVSBridge
+@testable import GFNBridge
 
 final class MapperTests: XCTestCase {
     func testOrionXYMapsToWarthogStickXY() {

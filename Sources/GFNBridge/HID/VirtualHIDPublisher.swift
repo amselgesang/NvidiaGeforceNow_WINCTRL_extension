@@ -10,13 +10,13 @@ enum VirtualHIDPublisherError: LocalizedError {
         switch self {
         case .deviceCreationFailed:
             return """
-            IOHIDUserDevice creation was rejected. NVSBridge requires the \
+            IOHIDUserDevice creation was rejected. GFNBridge requires the \
             com.apple.developer.hid.virtual.device entitlement plus an eligible Apple \
             Developer provisioning profile with the HID Virtual Device capability. \
             Ad-hoc or local signing alone is not sufficient; publication remains blocked \
             until that profile is available. After swift build, run \
-            scripts/sign-nvsbridge.sh with a Developer ID identity, then launch \
-            .build/debug/NVSBridge spike-stick.
+            scripts/sign-gfnbridge.sh with a Developer ID identity, then launch \
+            .build/debug/GFNBridge spike-stick.
             """
         case let .initialReportFailed(result):
             return "The initial centered HID report failed with IOReturn \(result)."

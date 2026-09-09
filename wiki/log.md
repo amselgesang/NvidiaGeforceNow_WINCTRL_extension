@@ -11,13 +11,13 @@ Append-only. Prefix: `## [YYYY-MM-DD] <kind> | <title>`
 
 ## [2026-09-08] design | Implementation plan — Warthog spoof remapper
 
-- Wrote `docs/superpowers/plans/2026-09-08-nvs-warthog-spoof-remapper.md` (SwiftPM, Tasks 1–8, empty-spoof gate before Orion map).
+- Wrote `docs/superpowers/plans/2026-09-08-gfn-warthog-spoof-remapper.md` (SwiftPM, Tasks 1–8, empty-spoof gate before Orion map).
 - Next: execute plan (subagent-driven or inline) starting Task 1.
 
 ## [2026-09-08] design | Spec written — Warthog spoof remapper
 
 - User approved D5 Warthog stick + dual throttle design.
-- Formal spec: `docs/superpowers/specs/2026-09-08-nvs-warthog-spoof-remapper-design.md` (on branch `cursor/warthog-spoof-remapper-design`).
+- Formal spec: `docs/superpowers/specs/2026-09-08-gfn-warthog-spoof-remapper-design.md` (on branch `cursor/warthog-spoof-remapper-design`).
 - Follow-on: implementation plan (completed same day).
 
 ## [2026-09-08] design | D5 Warthog stick + dual throttle spoof
@@ -85,3 +85,8 @@ Append-only. Prefix: `## [YYYY-MM-DD] <kind> | <title>`
 - Live spike **not run** — blocked on Apple HID Virtual Device provisioning (`IOHIDUserDeviceCreate` / AMFI -413 on this host).
 - Filed blocked query: `wiki/queries/gfn-empty-warthog-spike.md`; indexed in `wiki/index.md`.
 - Pages touched: `docs/spike/gfn-empty-warthog-checklist.md`, `wiki/log.md`, `wiki/index.md`, `wiki/queries/gfn-empty-warthog-spike.md`
+
+## [2026-09-08] lint | Rename NVS → GFN
+
+- Replaced project abbreviation **NVS** with **GFN** (GeForce NOW) in wiki, specs, plans, package (`GFNBridge`), scripts, and diagrams.
+- Pages/files: `AGENTS.md`, `README.md`, `Package.swift`, `Sources/GFNBridge`, `Tests/GFNBridgeTests`, wiki, docs.
